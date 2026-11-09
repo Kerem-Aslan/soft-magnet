@@ -39,7 +39,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "test": "npm run build && node --test test/",
+    "test": "npm run build && node --test \"test/*.test.ts\"",
     "demo": "npm run build && node demo/serve.mjs",
     "prepublishOnly": "npm test && npm run typecheck"
   },
