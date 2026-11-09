@@ -50,3 +50,9 @@ test("custom range, pull and grow", () => {
   assert.ok(p.scale > 1.19);
   assert.deepEqual(magnetPose(210, 0, { range: 200 }), { x: 0, y: 0, scale: 1 });
 });
+
+test("options passed as undefined fall back to the defaults", () => {
+  const p = magnetPose(40, 0, { range: undefined, pull: undefined, grow: undefined, strength: undefined });
+  assert.deepEqual(p, magnetPose(40, 0));
+  assert.ok(Number.isFinite(p.x) && p.x > 0);
+});

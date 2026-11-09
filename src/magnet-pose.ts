@@ -25,7 +25,11 @@ export const DEFAULTS: Readonly<Required<MagnetOptions>> = Object.freeze({
  * toward the edge of the range, so there is no jump when the cursor crosses it.
  */
 export function magnetPose(dx: number, dy: number, options: MagnetOptions = {}, radius = 0): Pose {
-  const { range, pull, grow, strength } = { ...DEFAULTS, ...options };
+  // `??` rather than spreading, so an option passed as undefined still gets its default.
+  const range = options.range ?? DEFAULTS.range;
+  const pull = options.pull ?? DEFAULTS.pull;
+  const grow = options.grow ?? DEFAULTS.grow;
+  const strength = options.strength ?? DEFAULTS.strength;
   const reach = range + radius;
   const d = Math.hypot(dx, dy);
   if (reach <= 0 || d >= reach || strength === 0) return { x: 0, y: 0, scale: 1 };
