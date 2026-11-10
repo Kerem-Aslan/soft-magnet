@@ -67,7 +67,7 @@ The two pieces inside `magnet()` are exported too, for when you run your own ani
 (for example many nodes on a canvas, or things that live in a zoomed coordinate space):
 
 ```js
-import { createSpring, magnetPose } from "soft-magnet";
+import { createSpring, magnetPose, STEP_MS } from "soft-magnet";
 
 const spring = createSpring();
 
@@ -82,6 +82,7 @@ el.style.scale = String(spring.scale);
 
 `magnetPose(dx, dy, options, radius)` returns `{ x, y, scale }`; `radius` adds the element's own
 size to the range. `spring.snap()` jumps straight to the target (useful under reduced motion).
+`STEP_MS` is the length of one spring step: pass it as the elapsed time of the first frame.
 
 ## Notes
 
